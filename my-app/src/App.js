@@ -1,7 +1,22 @@
-import Gallery from "./gallery";
+import React from "react";
+import ReactDOM from 'react-dom/client';
+import './App.css'
 
-export default function App() {
+const  Change = ()=> {
+
+
+
+  
   return (
-    <Gallery />
+    <>
+    <h1>React Project NO 01 </h1>
+    <h1>Count Down App</h1>
+
+
+
+    </>
   );
 }
+
+
+export default Change;
