@@ -1,39 +1,21 @@
-import React from "react";
-
-import './App.css'
-
-
-
-// const Obj = {
-//   name: "mansoor" ,
-//   age: 30
-
-// }
-
-
-// function Diff() {
-//   return (
-//   <>
-//     <h1>my name is Muhammad {Obj.name} and my ageeeeeeeeeee is {Obj.age} year</h1>
-
-//   </>
-//   );
-// }
-
-
-const Change = () => {
-
-
-  return (
-    <>
-      <h1>Hellow World </h1>
-    
+import React from 'react';
+import './App.css';
 
 
 
-    </>
-  );
+
+function Show({object}){
+    return(
+        <div>
+        <h1> my name is {object.name} and my age is {object.age}</h1>
+        </div>
+    );
 }
 
-
-export default Change();
+export default function dataShow(){
+    return(
+        <div>
+            <Show object = {{    name: 'mansoor', age: 30 }} />
+        </div>
+    )
+}
