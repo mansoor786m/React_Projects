@@ -19,7 +19,7 @@ const Change = () => {
 
 
   return (
-    <>
+    <div className="body">
       <h1>React Project NO 01 </h1>
       <h1>Count Down App</h1>
       <h2> {nowDate.toString()}</h2>
@@ -27,7 +27,7 @@ const Change = () => {
 
 
 
-    </>
+    </div>
   );
 }
 
