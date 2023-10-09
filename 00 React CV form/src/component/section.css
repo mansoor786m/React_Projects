@@ -1,0 +1,15 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+.section{
+    width: 100%;
+    min-height: 10px;
+    background-color: aquamarine;
+    margin: 10px;
+
+
+}

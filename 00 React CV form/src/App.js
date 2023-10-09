@@ -1,23 +1,16 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Section from "./component/section.js";
+
+export default function App() {
+  return (
+    <div className="main-page">
+      <Section>
+        
+      </Section>
 
 
-
-
-function Show({object}){
-    return(
-        <div>
-        <h1> my name is {object.name} and my age is {object.age}</h1>
-        </div>
-    );
+    </div>
+  )
 }
-
-export default function App(){
-
     
-    return(
-        <div>
-            <Show object = {{    name: 'mansoor', age: 30 }} />
-        </div>
-    )
-}
