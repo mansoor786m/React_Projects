@@ -18,8 +18,18 @@ export default function Textarea(props) {
         setText(text.toLowerCase());
 
     }
-    const changeCamalCase = () => {
-        setText(text.toLocaleLowerCase());
+    const changeCapitalCase = () => {
+        let str = text.split(' ');
+        let new_arr = []
+        for (let index = 0; index < str.length; index++) {
+            const word = str[index];
+            const first_latter = word[0].toUpperCase();
+            const remaing = word.slice(1).toLowerCase();
+            const new_word = first_latter + remaing;
+            new_arr[index] = new_word;
+        }
+        setText(new_arr.join(' '))
+
 
     }
     const changeReverseText = () => {
@@ -30,19 +40,21 @@ export default function Textarea(props) {
 
 
     const changeReverseword = () => {
-    
-        let arr = text.split(" ");
-        // console.log(arr)
-        let str="";
-        for (let index =arr.length-1; index >=0; index--) {
-            console.log(arr[index]);
-            str.join(' ') += arr[index]
-            
-            console.log(str);
-            
-        }
-   
+
+        const arr = text.split(" ");
+        const revarr = arr.reverse();
+        const revtext = revarr.join(' ');
+        setText(revtext);
+
     }
+    const changeBoldword = () => {
+
+        
+        setText(<b>text</b>);
+
+    }
+
+
 
 
     return (
@@ -53,11 +65,12 @@ export default function Textarea(props) {
                     <h2 class=" text-white" >{props.title}</h2>
                     <textarea className="form-control" value={text} onChange={handleOnChange} id="exampleFormControlTextarea1" rows="8"></textarea>
                 </div>
-                <button className='btn btn-primary mx-1' onClick={changeUperCase}>Upper Case</button>
-                <button className='btn btn-primary mx-1' onClick={changeLowerCase}>Lower Case</button>
-                <button className='btn btn-primary mx-1' onClick={changeCamalCase}>Camal Case</button>
-                <button className='btn btn-primary mx-1' onClick={changeReverseText}>Reverse Text</button>
-                <button className='btn btn-primary mx-1' onClick={changeReverseword}>Reverse Word</button>
+                <button className='btn btn-primary mx-1  my-2' onClick={changeUperCase}>Upper Case</button>
+                <button className='btn btn-primary mx-1  my-2' onClick={changeLowerCase}>Lower Case</button>
+                <button className='btn btn-primary mx-1  my-2' onClick={changeCapitalCase}>Capitalize Case</button>
+                <button className='btn btn-primary mx-1  my-2' onClick={changeReverseText}>Reverse Text</button>
+                <button className='btn btn-primary mx-1  my-2' onClick={changeReverseword}>Reverse Word</button>
+                <button className='btn btn-primary mx-1  my-2' onClick={changeBoldword}>Bold Word</button>
 
 
             </div>
