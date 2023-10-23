@@ -47,11 +47,22 @@ export default function Textarea(props) {
         setText(revtext);
 
     }
-    const changeBoldword = () => {
-
+    const handleCopy = () => {
         
-        setText(<b>text</b>);
+        const selectText = document.getElementById('my-text')
+        selectText.select();
 
+        selectText.setSelectionRange(0,9999);
+        navigator.clipboard.writeText(selectText.value);
+        // console.log(text)  
+    }
+    const handleExtreSpace = () => {
+        let newtext = text.split(/[ ]+/);
+        console.log(newtext)
+        setText(newtext.join(" "));
+
+     
+ 
     }
 
 
@@ -62,20 +73,21 @@ export default function Textarea(props) {
             <div className='container'>
 
                 <div className="mb-3">
-                    <h2 class=" text-white" >{props.title}</h2>
-                    <textarea className="form-control" value={text} onChange={handleOnChange} id="exampleFormControlTextarea1" rows="8"></textarea>
+                    <h2 className=" text-white" >{props.title}</h2>
+                    <textarea className="form-control" value={text} onChange={handleOnChange} id="my-text" rows="8"></textarea>
                 </div>
                 <button className='btn btn-primary mx-1  my-2' onClick={changeUperCase}>Upper Case</button>
                 <button className='btn btn-primary mx-1  my-2' onClick={changeLowerCase}>Lower Case</button>
                 <button className='btn btn-primary mx-1  my-2' onClick={changeCapitalCase}>Capitalize Case</button>
                 <button className='btn btn-primary mx-1  my-2' onClick={changeReverseText}>Reverse Text</button>
                 <button className='btn btn-primary mx-1  my-2' onClick={changeReverseword}>Reverse Word</button>
-                <button className='btn btn-primary mx-1  my-2' onClick={changeBoldword}>Bold Word</button>
+                <button className='btn btn-primary mx-1  my-2' onClick={handleCopy}>Copy Text</button>
+                <button className='btn btn-primary mx-1  my-2' onClick={handleExtreSpace}>Remove Spaces</button>
 
 
             </div>
 
-            <div className="container text-white border my-3">
+            <div className="container text-white  my-2">
                 <h2> Text Summery</h2>
                 <h5>{text.length} Words and {text.split(" ").length} Character</h5>
                 <h2>Preview</h2>
