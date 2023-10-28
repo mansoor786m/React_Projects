@@ -34,15 +34,15 @@ export default function Navbar(props) {
                                 <a className="nav-link disabled" aria-disabled="true" href="/">{props.about}</a>
                             </li>
                         </ul>
-                        <form className="d-flex" role="search">
+                        <form className={`d-flex role="search`}>
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                             <button className="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>
-                    <div className={`form-check mx-3 form-switch text-${props.mode=== 'light'? 'black':'white'}`}>
-                            <input className="form-check-input" type="checkbox" role="switch" id="dark-mode" onClick={props.toggleMode} />
-                            <label className="form-check-label" htmlFor="dark-mode">Enable Dark mode</label>
-                        </div>
+                    <div className={`form-check mx-3 form-switch text-${props.mode === 'light' ? 'black' : 'white'}`}>
+                        <input className="form-check-input" type="checkbox" role="switch" id="dark-mode" onClick={props.toggleMode} />
+                        <label className="form-check-label" htmlFor="dark-mode">Enable Dark mode</label>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -51,14 +51,14 @@ export default function Navbar(props) {
 
 
 // how define the type of props in a function
-Navbar.prototype={
+Navbar.prototype = {
     title: PropTypes.string.isRequired,
     home: PropTypes.string.isRequired,
     about: PropTypes.string.isRequired
 }
 // how define the defaults props in a function
 Navbar.defaultProps = {
-    title : 'Set The Title Here',
+    title: 'Set The Title Here',
     home: 'Home',
     about: 'About'
 
