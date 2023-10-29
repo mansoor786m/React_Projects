@@ -4,15 +4,18 @@ import './App.css';
 import About from './component/About';
 import Navbar from './component/Navbar';
 import Textarea from './component/Textarea';
+import Alert from './component/Alert';
 
 function App() {
   const [mode, setmode] = useState('light')
   const handleDarkMode = () => {
     
     if (mode=== 'light') {
-      setmode('dark')
+      setmode('dark');
+      document.body.style.backgroundColor = 'grey';
     }else{
       setmode('light')
+      document.body.style.backgroundColor = 'white';
     }
 
   }
@@ -20,8 +23,9 @@ function App() {
   return (
     <>
       <Navbar title="Textutility" about='Disable' mode = {mode} toggleMode={handleDarkMode} />
+      <Alert/>
       <Textarea title="Enter Your Text Here :" mode ={mode} ></Textarea>
-      <About />
+      {/* <About /> */}
     </>
   );
 }

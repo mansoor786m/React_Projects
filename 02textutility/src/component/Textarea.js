@@ -3,8 +3,9 @@ import React, { useState } from 'react'
 
 
 export default function Textarea(props) {
+    console.log(props.mode)
 
-    const [text, setText] = useState('Enter Text Here now');
+    const [text, setText] = useState('');
 
     const handleOnChange = (event) => {
         setText(event.target.value);
@@ -70,11 +71,14 @@ export default function Textarea(props) {
 
     return (
         <>
-            <div className='container'>
 
-                <div className="mb-3">
-                    <h2 className=" text-white" >{props.title}</h2>
-                    <textarea className="form-control" value={text} onChange={handleOnChange} id="my-text" rows="8"></textarea>
+        
+            <div className='container'>
+                
+
+                <div className={`mb-3 text-${props.mode === 'light'? 'black':'white'}`}>
+                    <h2  >{props.title}</h2>
+                    <textarea className="form-control"style={{backgroundColor: props.mode === 'light'? 'white':'grey', color: props.mode === 'light'? 'black':'white'}}  value={text} onChange={handleOnChange} id="my-text" rows="8"></textarea>
                 </div>
                 <button className='btn btn-primary mx-1  my-2' onClick={changeUperCase}>Upper Case</button>
                 <button className='btn btn-primary mx-1  my-2' onClick={changeLowerCase}>Lower Case</button>
@@ -87,11 +91,11 @@ export default function Textarea(props) {
 
             </div>
 
-            <div className="container text-white  my-2">
+            <div className={`container text-${props.mode === 'light'? 'grey':'white'}  my-2`} >
                 <h2> Text Summery</h2>
                 <h5>{text.length} Words and {text.split(" ").length} Character</h5>
                 <h2>Preview</h2>
-                <p>{text}</p>
+                <p>{text.length>0? text :"Please Enter Above text to preview"}</p>
 
 
             </div>
