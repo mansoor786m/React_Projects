@@ -14,11 +14,11 @@ function App() {
     if (mode === 'light') {
       setmode('dark');
       document.body.style.backgroundColor = 'grey';
-      showAlert("Dark mode is actived","success");
+      showAlert("Dark mode is actived", "success");
     } else {
       setmode('light')
       document.body.style.backgroundColor = 'white';
-      showAlert("Light mode is actived","success");
+      showAlert("Light mode is actived", "success");
     }
 
   }
@@ -37,7 +37,7 @@ function App() {
     <>
       <Navbar title="Textutility" about='Disable' mode={mode} toggleMode={handleDarkMode} />
       <Alert alert={alert} />
-      <Textarea showAlert ={showAlert} title="Enter Your Text Here :" mode={mode} ></Textarea>
+      <Textarea showAlert={showAlert} title="Enter Your Text Here :" mode={mode} ></Textarea>
       <About />
     </>
   );
