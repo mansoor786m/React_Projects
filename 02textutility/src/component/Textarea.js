@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 
 export default function Textarea(props) {
-    console.log(props.mode)
+    // console.log(props.showAlert())
 
     const [text, setText] = useState('');
 
@@ -11,14 +11,19 @@ export default function Textarea(props) {
         setText(event.target.value);
 
     }
+
     const changeUperCase = () => {
         setText(text.toUpperCase());
+        props.showAlert("Convert to Upper Case" , "success")
 
     }
+
     const changeLowerCase = () => {
         setText(text.toLowerCase());
+        props.showAlert("Convert to Lower Case" , "success")
 
     }
+
     const changeCapitalCase = () => {
         let str = text.split(' ');
         let new_arr = []
