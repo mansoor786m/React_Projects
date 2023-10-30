@@ -35,13 +35,14 @@ export default function Textarea(props) {
             new_arr[index] = new_word;
         }
         setText(new_arr.join(' '))
-
+        props.showAlert("Convert to Capitalize " , "success")
 
     }
     const changeReverseText = () => {
         let str = text.split('').reverse().join('');
         // console.log(str)
         setText(str)
+        props.showAlert("Convert to Reverse text" , "success")
     }
 
 
@@ -67,7 +68,7 @@ export default function Textarea(props) {
         console.log(newtext)
         setText(newtext.join(" "));
 
-     
+        props.showAlert("Extra Space Removed" , "success")
  
     }
 
