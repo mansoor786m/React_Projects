@@ -7,12 +7,15 @@ export default function Navbar(props) {
 
     const [radioCheck, setradioCheck] = useState(false);
     const handleclick = (color) => {
+        console.log(radioCheck)
+        console.log(color)
         if( radioCheck){
             props.handleDarkMode(color)
-            setradioCheck(!radioCheck)
+           
         }else{
             props.handleDarkMode(color)
         }
+        setradioCheck(!radioCheck)
 
     
 
