@@ -7,18 +7,18 @@ export default function Navbar(props) {
 
     const [radioCheck, setradioCheck] = useState(false);
     const handleclick = (color) => {
-        if (color=== 'blue') {
-            setradioCheck(false)
+        if( radioCheck){
+            props.handleDarkMode(color)
+            setradioCheck(!radioCheck)
+        }else{
             props.handleDarkMode(color)
         }
-        if (color=== 'green') {
-            setradioCheck(false)
-            props.handleDarkMode(color)
-        }
-        // console.log(color)
-        // setradioCheck(!radioCheck)
-        
-        // props.handleDarkMode(radioCheck);
+
+    
+
+
+
+    
     };
 
 
@@ -59,7 +59,7 @@ export default function Navbar(props) {
                         </form>
                     </div>
                     <div className={`form-check mx-3 form-switch text-${props.mode === 'light' ? 'black' : 'white'}`} >
-                        <input className="form-check-input" type="checkbox"  defaultChecked={radioCheck} role="switch" id="dark-mode" onClick={() => handleclick()} />
+                        <input className="form-check-input" type="checkbox"  defaultChecked={radioCheck} role="switch" id="dark-mode" onClick={() => radioCheck? handleclick('grey') : handleclick('light')} />
                         <label className="form-check-label" htmlFor="dark-mode">Light/Dark mode</label>
                         <button type="button" className="btn btn-primary" onClick={() => handleclick('blue')}>Primary</button>
                         <button type="button" className="btn btn-success" onClick={() => handleclick('green')}>Secondary</button>
