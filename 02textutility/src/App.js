@@ -10,15 +10,14 @@ function App() {
   const [mode, setmode] = useState('light');
   const [alert, setAlert] = useState(null);
   const handleDarkMode = (e) => {
-    // console.log(e.target.checked)
-    // console.log(e.target.value)
+
 
     if (mode === 'light') {
-      setmode('dark');
+      setmode(e);
       document.body.style.backgroundColor = 'grey';
       showAlert("Dark mode is actived", "success");
     } else {
-      setmode('light')
+      setmode(e)
       document.body.style.backgroundColor = 'white';
       showAlert("Light mode is actived", "success");
     }
