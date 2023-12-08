@@ -1,13 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import '../index.css'
 
 
 export default function Navbar(props) {
+
+    const [radioCheck, setradioCheck] = useState(false);
+    const handleclick = (color) => {
+        if (color=== 'blue') {
+            setradioCheck(false)
+            props.handleDarkMode(color)
+        }
+        if (color=== 'green') {
+            setradioCheck(false)
+            props.handleDarkMode(color)
+        }
+        // console.log(color)
+        // setradioCheck(!radioCheck)
+        
+        // props.handleDarkMode(radioCheck);
+    };
+
+
     return (
         <div className='container my-3'>
             <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}  `}>
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="/">{props.title}</a>
+                    <a className={`navbar-brand  text-${props.mode === 'light' ? 'black' : 'white'}`} href="/">{props.title}</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -39,11 +58,15 @@ export default function Navbar(props) {
                             <button className="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>
-                    <div className={`form-check mx-3 form-switch text-${props.mode === 'light' ? 'black' : 'white'}`}>
-                        <input className="form-check-input" type="checkbox" role="switch" id="dark-mode" onClick={props.toggleMode} />
-                        <label className="form-check-label" htmlFor="dark-mode">Enable Dark mode</label>
+                    <div className={`form-check mx-3 form-switch text-${props.mode === 'light' ? 'black' : 'white'}`} >
+                        <input className="form-check-input" type="checkbox"  defaultChecked={radioCheck} role="switch" id="dark-mode" onClick={() => handleclick()} />
+                        <label className="form-check-label" htmlFor="dark-mode">Light/Dark mode</label>
+                        <button type="button" className="btn btn-primary" onClick={() => handleclick('blue')}>Primary</button>
+                        <button type="button" className="btn btn-success" onClick={() => handleclick('green')}>Secondary</button>
                     </div>
+
                 </div>
+
             </nav>
         </div>
     )

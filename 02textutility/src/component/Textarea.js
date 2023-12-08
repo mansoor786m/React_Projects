@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 export default function Textarea(props) {
     // console.log(props.showAlert())
 
-    const [text, setText] = useState('');
+    const [text, setText] = useState('Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit quos blanditiis sequi doloremque! Fuga placeat corrupti accusamus eaque reprehenderit esse sapiente laborum beatae numquam veniam ipsum sequi quos dignissimos, consequuntur doloremque pariatur totam dicta maxime dolorum repellendus? Accusantium, porro. Animi cupiditate tempore rem blanditiis iure vitae facere soluta asperiores voluptate!');
 
     const handleOnChange = (event) => {
         setText(event.target.value);

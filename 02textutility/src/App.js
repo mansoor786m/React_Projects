@@ -9,7 +9,9 @@ import Alert from './component/Alert';
 function App() {
   const [mode, setmode] = useState('light');
   const [alert, setAlert] = useState(null);
-  const handleDarkMode = () => {
+  const handleDarkMode = (e) => {
+    // console.log(e.target.checked)
+    // console.log(e.target.value)
 
     if (mode === 'light') {
       setmode('dark');
@@ -29,13 +31,13 @@ function App() {
       type: type
     })
     setTimeout(() => {
-      showAlert(null)
+      setAlert(null)
     }, 3000);
   }
 
   return (
     <>
-      <Navbar title="Textutility" about='Disable' mode={mode} toggleMode={handleDarkMode} />
+      <Navbar title="Textutility" about='Disable' mode={mode} handleDarkMode={handleDarkMode} />
       <Alert alert={alert} />
       <Textarea showAlert={showAlert} title="Enter Your Text Here :" mode={mode} ></Textarea>
       <About />
