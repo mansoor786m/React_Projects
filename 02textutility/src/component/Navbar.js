@@ -8,14 +8,24 @@ export default function Navbar(props) {
     const [radioCheck, setradioCheck] = useState(false);
     const handleclick = (color) => {
         console.log(radioCheck)
-        console.log(color)
-        if( radioCheck){
+        // console.log(color)
+        if( color==='blue' || color==='green' && radioCheck ===false ){
             props.handleDarkMode(color)
-           
+
+        }
+        if(color==='blue' || color==='green' && radioCheck === true ){
+            props.handleDarkMode(color)
+            setradioCheck(false)
         }else{
             props.handleDarkMode(color)
+            if (color==='grey') {
+                setradioCheck(true) 
+            }else{
+                setradioCheck(false)
+            }
+         
         }
-        setradioCheck(!radioCheck)
+
 
     
 
@@ -26,14 +36,14 @@ export default function Navbar(props) {
 
 
     return (
-        <div className='container my-3'>
-            <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}  `}>
-                <div className="container-fluid">
+        <div className="container my-3  ">
+            <nav className={`navbar navbar-expand-lg navbar-${props.mode}  bg-${props.mode === 'light' ? '#95a5a6' : 'grey'}  `}>
+                <div className={`container-fluid `}>
                     <a className={`navbar-brand  text-${props.mode === 'light' ? 'black' : 'white'}`} href="/">{props.title}</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div className={`collapse navbar-collapse text-${props.mode === 'light' ? 'grey' : 'white'}`} id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 <a className="nav-link active" aria-current="page" href="/">{props.home}</a>
@@ -62,7 +72,7 @@ export default function Navbar(props) {
                         </form>
                     </div>
                     <div className={`form-check mx-3 form-switch text-${props.mode === 'light' ? 'black' : 'white'}`} >
-                        <input className="form-check-input" type="checkbox"  defaultChecked={radioCheck} role="switch" id="dark-mode" onClick={() => radioCheck? handleclick('grey') : handleclick('light')} />
+                        <input className="form-check-input" type="checkbox"  defaultChecked={radioCheck} role="switch" id="dark-mode" onClick={() => radioCheck? handleclick('light') : handleclick('grey')} />
                         <label className="form-check-label" htmlFor="dark-mode">Light/Dark mode</label>
                         <button type="button" className="btn btn-primary" onClick={() => handleclick('blue')}>Primary</button>
                         <button type="button" className="btn btn-success" onClick={() => handleclick('green')}>Secondary</button>

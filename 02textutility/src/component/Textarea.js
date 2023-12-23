@@ -84,7 +84,7 @@ export default function Textarea(props) {
 
                 <div className={`mb-3 text-${props.mode === 'light'? 'black':'white'}`}>
                     <h2  >{props.title}</h2>
-                    <textarea className="form-control"style={{backgroundColor: props.mode === 'light'? 'white':'grey', color: props.mode === 'light'? 'black':'white'}}  value={text} onChange={handleOnChange} id="my-text" rows="8"></textarea>
+                    <textarea className="form-control"style={{backgroundColor: props.mode === 'light'? 'white': props.mode , color: props.mode === 'light'? 'black':'white'}}  value={text} onChange={handleOnChange} id="my-text" rows="8"></textarea>
                 </div>
                 <button className='btn btn-primary mx-1  my-2' onClick={changeUperCase}>Upper Case</button>
                 <button className='btn btn-primary mx-1  my-2' onClick={changeLowerCase}>Lower Case</button>

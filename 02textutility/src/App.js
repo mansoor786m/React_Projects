@@ -10,13 +10,30 @@ function App() {
   const [mode, setmode] = useState('light');
   const [alert, setAlert] = useState(null);
   const handleDarkMode = (e) => {
-    // console.log(e)
+    setmode(e);
 
-
-    
-      setmode(e);
+    if (e==='light') {
+      console.log(e)
+      document.body.style.backgroundColor = '#ecf0f1';
+      showAlert("Light mode is actived", "success");
+      
+    }
+    if (e==='grey') {
+      console.log(e)
       document.body.style.backgroundColor = 'grey';
       showAlert("Dark mode is actived", "success");
+    }
+    if (e==='blue') {
+      console.log(e)
+      document.body.style.backgroundColor = '#3498db';
+      showAlert("Blue mode is actived", "success");
+    }
+    if (e==='green') {
+      console.log(e)
+      document.body.style.backgroundColor = '#27ae60';
+      showAlert("Green mode is actived", "success");
+    }
+     
 
   }
 
