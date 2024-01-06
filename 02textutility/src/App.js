@@ -10,8 +10,8 @@ import Alert from './component/Alert';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
+
 } from "react-router-dom";
 
 function App() {
@@ -75,11 +75,11 @@ function App() {
       <Navbar title="Textutility" about='Disable' mode={mode} handleDarkMode={handleDarkMode} />
       <Alert alert={alert} />
         <Switch>
-          <Route path="/about">
+          <Route exact path="/about">
             <About />
           </Route>
 
-          <Route path="/">
+          <Route exact path="/">
             <Textarea showAlert={showAlert} title="Enter Your Text Here :" mode={mode} ></Textarea>
           </Route>
         </Switch>
