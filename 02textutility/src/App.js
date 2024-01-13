@@ -1,18 +1,18 @@
 import React from 'react'
 import { useState } from 'react'
 import './App.css';
-import About from './component/About';
+// import About from './component/About';
 import Navbar from './component/Navbar';
 import Textarea from './component/Textarea';
 import Alert from './component/Alert';
 
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route
 
-} from "react-router-dom";
+// } from "react-router-dom";
 
 function App() {
   const [mode, setmode] = useState('light');
@@ -71,19 +71,19 @@ function App() {
   return (
     <>
       
-      <Router>
+      {/* <Router> */}
       <Navbar title="Textutility" about='Disable' mode={mode} handleDarkMode={handleDarkMode} />
       <Alert alert={alert} />
-        <Switch>
+        {/* <Switch>
           <Route exact path="/about">
             <About />
-          </Route>
+          </Route> */}
 
-          <Route exact path="/">
+          {/* <Route exact path="/"> */}
             <Textarea showAlert={showAlert} title="Enter Your Text Here :" mode={mode} ></Textarea>
-          </Route>
+          {/* </Route>
         </Switch>
-      </Router>
+      </Router> */}
 
 
 
