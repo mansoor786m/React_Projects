@@ -6,7 +6,7 @@ export default function App() {
   return (
     <div className="main-page">
       <Section>
-       
+       <div>hellow world</div>
       </Section>
 
 
