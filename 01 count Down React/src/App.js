@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import ReactDOM from 'react-dom/client';
 import './App.css';
 import DateTimeDisplay from "./DateTimeDisplay";
@@ -16,53 +16,52 @@ const App = () => {
 
 
 
-  const [time, setTime] = useState(new Date())
-  const [finalDate, setFinaldate] = useState()
-  const [month, setMonth] = useState()
-  const [day, setDay] = useState()
-  const [hrs, setHrs] = useState()
-  const [min, setMin] = useState()
-  const [sec, setSec] = useState()
+  // const [time, setTime] = useState(new Date())
+  const [finalDate, setFinaldate] = useState(null)
+  const [month, setMonth] = useState(0)
+  const [day, setDay] = useState(0)
+  const [hrs, setHrs] = useState(0)
+  const [min, setMin] = useState(0)
+  const [sec, setSec] = useState(0)
 
   const HandleChange = (e) => {
     setFinaldate(new Date(e.target.value))
   }
 
-  const handleClick = () => {
-    setTime(new Date())
+
+  const getValues = () => {
+    const time = new Date();
     const diff = (finalDate - time) / 1000;
-    console.log(diff)
-
     if (diff > 0) {
-
       // convert into days;
-
-      setMonth(Math.floor((diff % 31536000) / 2628000))
-      setDay(Math.floor(((diff % 31536000) % 2628000) / 86400))
-      setHrs(Math.floor((((diff % 31536000) % 2628000) % 86400) / 3600))
-      setMin(Math.floor((((diff % 31536000) % 86400) % 3600) / 60))
-      setSec(Math.floor(diff) % 60)
-
-
-
-
+      setMonth(Math.floor((diff % 31536000) / 2628000));
+      setDay(Math.floor(((diff % 31536000) % 2628000) / 86400));
+      setHrs(Math.floor((((diff % 31536000) % 2628000) % 86400) / 3600));
+      setMin(Math.floor((((diff % 31536000) % 86400) % 3600) / 60));
+      setSec(Math.floor(diff) % 60);
+      console.log(month, day, hrs, min, sec);
     }
-    else return;
+  };
 
-  }
-  console.log(month)
+  useEffect(() => { getValues() }, [new Date()])
+
+  const handleClick = () => {
+    getValues()
 
 
 
+    // const interval = setInterval(() => {
+    //   getValues();
+    // }, 1000);
 
-
+  };
 
 
   return (
     <div className="body">
       <h1 className="text-4xl font-bold underline my-3">React Project NO 01 </h1>
       <h1 className="text-2xl font-bold">Count Down App</h1>
-      <h2 className="text-3xl text-green-500 my-4 font-bold underline"> {time.toString()}</h2>
+      <h2 className="text-3xl text-green-500 my-4 font-bold underline"> {new Date().toString()}</h2>
 
       <input className="text-2xl text-blue-600 my-4 font-bold " type="datetime-local" placeholder="enter date" onChange={HandleChange} />
 
@@ -80,17 +79,3 @@ const App = () => {
 export default App;
 
 
-// const today = new Date();
-
-// function formatDate(date) {
-//   return new Intl.DateTimeFormat(
-//     'en-US',
-//     { weekday: 'long' }
-//   ).format(date);
-// }
-
-// export default function TodoList() {
-//   return (
-//     <h1>To Do List for {formatDate(today)}</h1>
-//   );
-// }
