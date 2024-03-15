@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // import ReactDOM from 'react-dom/client';
 import './App.css';
 import DateTimeDisplay from "./DateTimeDisplay";
@@ -16,22 +16,24 @@ const App = () => {
 
 
 
-  // const [time, setTime] = useState(new Date())
+  const [time, setTime] = useState(new Date())
   const [finalDate, setFinaldate] = useState(null)
   const [month, setMonth] = useState(0)
   const [day, setDay] = useState(0)
   const [hrs, setHrs] = useState(0)
   const [min, setMin] = useState(0)
   const [sec, setSec] = useState(0)
+  const [start, setStart] = useState(true)
+  const interval = useRef(null)
 
   const HandleChange = (e) => {
     setFinaldate(new Date(e.target.value))
   }
 
-
   const getValues = () => {
-    const time = new Date();
-    const diff = (finalDate - time) / 1000;
+    const newtime = new Date();
+    setTime(newtime)
+    const diff = (finalDate - newtime) / 1000;
     if (diff > 0) {
       // convert into days;
       setMonth(Math.floor((diff % 31536000) / 2628000));
@@ -43,16 +45,23 @@ const App = () => {
     }
   };
 
-  useEffect(() => { getValues() }, [new Date()])
+
 
   const handleClick = () => {
-    getValues()
+    if (start) {
+      interval.current = setInterval(() => {
+        getValues()
+      }, 1000);
+      setStart(false)
+    } else {
+      clearInterval(interval.current)
+      setStart(true);
+    }
 
 
 
-    // const interval = setInterval(() => {
-    //   getValues();
-    // }, 1000);
+
+
 
   };
 
@@ -61,14 +70,20 @@ const App = () => {
     <div className="body">
       <h1 className="text-4xl font-bold underline my-3">React Project NO 01 </h1>
       <h1 className="text-2xl font-bold">Count Down App</h1>
-      <h2 className="text-3xl text-green-500 my-4 font-bold underline"> {new Date().toString()}</h2>
+      <h2 className="text-3xl text-green-500 my-4 font-bold underline"> {time.toString()}</h2>
 
       <input className="text-2xl text-blue-600 my-4 font-bold " type="datetime-local" placeholder="enter date" onChange={HandleChange} />
 
       <button className='text-center text-black text-2xl bg-green-500 rounded-full font-extrabold  p-2 m-3' onClick={handleClick}>
-        Get Started
+        {start ? ' Get Started' : "Stop TimeOut"}
       </button>
-      <DateTimeDisplay month={month} day={day} hrs={hrs} min={min} sec={sec} />
+      <DateTimeDisplay
+        month={month}
+        day={day}
+        hrs={hrs}
+        min={min}
+        sec={sec}
+      />
 
 
     </div>
