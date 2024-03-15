@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 // import ReactDOM from 'react-dom/client';
 import './App.css';
 import DateTimeDisplay from "./DateTimeDisplay";
@@ -29,6 +29,7 @@ const App = () => {
   }
 
   const handleClick = () => {
+    setTime(new Date())
     const diff = (finalDate - time) / 1000;
     console.log(diff)
 
@@ -42,7 +43,7 @@ const App = () => {
       setMin(Math.floor((((diff % 31536000) % 86400) % 3600) / 60))
       setSec(Math.floor(diff) % 60)
 
-      // console.log(month)
+
 
 
     }
@@ -50,6 +51,7 @@ const App = () => {
 
   }
   console.log(month)
+
 
 
 
