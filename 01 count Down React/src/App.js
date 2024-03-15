@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import ReactDOM from 'react-dom/client';
 import './App.css';
+import DateTimeDisplay from "./DateTimeDisplay";
 
 
 
@@ -11,30 +12,42 @@ import './App.css';
 // }
 
 
-const Change = () => {
+const App = () => {
 
 
 
   const [time, setTime] = useState(new Date())
   const [finalDate, setFinaldate] = useState()
-
-
-
-
-
-
-  console.log(time);
-  // // const [target, setTarget] = useState(nowDate.toLocaleString())
-
-  const handleClick = () => {
-    //   console.log(nowDate.toLocaleString())
-    //   console.log(nowDate.to)
-  }
+  const [month, setMonth] = useState()
+  const [day, setDay] = useState()
+  const [hrs, setHrs] = useState()
+  const [min, setMin] = useState()
+  const [sec, setSec] = useState()
 
   const HandleChange = (e) => {
-
-    setFinaldate(new Date())
+    setFinaldate(new Date(e.target.value))
   }
+
+  const handleClick = () => {
+    const diff = (finalDate - time) / 1000;
+    console.log(diff)
+
+    if (diff > 0) {
+
+      // convert into days;
+      const month = Math.floor(diff / 3600 / 24 / 30);
+      setMonth(month)
+      const day = Math.floor(diff / 3600 / 24);
+      const hrs = Math.floor(diff / 3600) % 24;
+      const min = Math.floor(diff / 60) % 60;
+      const sec = Math.floor(diff) % 60;
+      console.log(month)
+    }
+    else return;
+
+  }
+
+
 
 
 
@@ -50,6 +63,7 @@ const Change = () => {
       <button className='text-center text-black text-2xl bg-green-500 rounded-full font-extrabold  p-2 m-3' onClick={handleClick}>
         Get Started
       </button>
+      <DateTimeDisplay month={month} day={day} hrs={hrs} min={min} sec={sec} />
 
 
     </div>
@@ -57,7 +71,7 @@ const Change = () => {
 }
 
 
-export default Change;
+export default App;
 
 
 // const today = new Date();
