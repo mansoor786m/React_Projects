@@ -35,17 +35,21 @@ const App = () => {
     if (diff > 0) {
 
       // convert into days;
-      const month = Math.floor(diff / 3600 / 24 / 30);
-      setMonth(month)
-      const day = Math.floor(diff / 3600 / 24);
-      const hrs = Math.floor(diff / 3600) % 24;
-      const min = Math.floor(diff / 60) % 60;
-      const sec = Math.floor(diff) % 60;
-      console.log(month)
+
+      setMonth(Math.floor((diff % 31536000) / 2628000))
+      setDay(Math.floor(((diff % 31536000) % 2628000) / 86400))
+      setHrs(Math.floor((((seconds % 31536000) % 2628000) % 86400) / 3600))
+      setMin(Math.floor((((seconds % 31536000) % 86400) % 3600) / 60))
+      setSec(Math.floor(diff) % 60)
+
+      // console.log(month)
+
+
     }
     else return;
 
   }
+  console.log(month)
 
 
 
