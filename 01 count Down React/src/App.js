@@ -38,8 +38,8 @@ const App = () => {
 
       setMonth(Math.floor((diff % 31536000) / 2628000))
       setDay(Math.floor(((diff % 31536000) % 2628000) / 86400))
-      setHrs(Math.floor((((seconds % 31536000) % 2628000) % 86400) / 3600))
-      setMin(Math.floor((((seconds % 31536000) % 86400) % 3600) / 60))
+      setHrs(Math.floor((((diff % 31536000) % 2628000) % 86400) / 3600))
+      setMin(Math.floor((((diff % 31536000) % 86400) % 3600) / 60))
       setSec(Math.floor(diff) % 60)
 
       // console.log(month)
