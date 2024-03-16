@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
+import Pasword from './Pasword';
 
 
 
@@ -91,7 +92,10 @@ function App() {
           <label htmlFor="characterInput">Characters</label>
       </div>
     </div>
+
+    <Pasword/>
 </div>
+
     
   )
 }
