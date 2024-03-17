@@ -58,13 +58,7 @@ const App = () => {
       setStart(true);
     }
 
-
-
-
-
-
   };
-
 
   return (
     <div className="body">
