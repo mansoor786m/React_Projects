@@ -1,24 +1,34 @@
 import './App.css';
+import PlayButton from './components/PlayButton';
 import Video from './components/Video';
+import VideosDB from './Data/data';
+
 
 function App() {
-  let obj = {
-    title: 'React JS tutorial',
-    views: '999K',
-    time: '1 year ago',
-    channel: 'Coder Dost',
-  };
+
   return (
     <div className="App">
 
-      <Video {...obj}></Video>
-      <Video title="Node JS tutorial" views="100K" time="1 month ago"></Video>
-      <Video
-        title="Mongo DB tutorial"
-        views="1M"
-        time="1 month ago"
-        channel="Coder Dost"
-      ></Video>
+
+      {VideosDB.map((video) => (
+        <Video
+          key={video.id}
+          title={video.title}
+          views={video.views}
+          time={video.time}
+          channel={video.channel}
+          verified={video.verified}
+          id={video.id}
+        >
+          <PlayButton>PLAY</PlayButton>
+          <PlayButton
+            onPlay={() => console.log('Playing..', video.title)}
+            onPause={() => console.log('Paused..', video.title)}
+          >
+            {video.title}
+          </PlayButton>
+        </Video>
+      ))}
     </div>
   );
 }
