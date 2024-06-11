@@ -1,10 +1,10 @@
 import './Video.css';
 
-function Video({ title, channel = "Coder Dost", views, time, verified, id, children, deleteVideo, editVideo }) {
+function Video({ title, channel = "Coder Dost", views, time, verified, id, children, dispatch, editVideo, }) {
   return (
     <>
       <div className='container'>
-        <button className='close' onClick={() => { deleteVideo(id) }}>X</button>
+        <button className='close' onClick={() => { dispatch({ type: 'DELETE', payload: id }) }}>X</button>
         <button className='edit' onClick={() => { editVideo(id) }}>--</button>
         <div className="pic">
           <img src={`https://picsum.photos/id/${id}/160/90`} alt="Katherine Johnson" />
