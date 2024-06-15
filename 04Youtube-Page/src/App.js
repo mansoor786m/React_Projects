@@ -4,6 +4,8 @@ import VideosDB from './Data/data';
 import AddVideo from './components/AddVideo';
 import VideoList from './components/VideoList';
 import ThemeContext from './components/context/ThemeContext';
+import VideoDispatchContext from './components/context/VideoDispatchContext';
+import VideoContext from './components/context/videoContext';
 
 
 
@@ -25,6 +27,7 @@ function App() {
         let index = videos.findIndex(v => v.id === action.payload.id)
         let newVideos = [...videos]
         newVideos.splice(index, 1, action.payload)
+
         return newVideos;
 
 
@@ -45,17 +48,24 @@ function App() {
   }
 
   const themeContext = useContext(ThemeContext)
-  console.log(themeContext)
+  // console.log(themeContext)
+  // console.log(videos)
+  // console.log(dispatch)
 
   return (
     <ThemeContext.Provider value={mode}>
-      <button className={mode} onClick={() => setMode(mode === 'lightMode' ? 'darkMode' : 'lightMode')}>Mode</button>
-      <div className={`App ${mode}`} onClick={() => console.log("app")}>
-        <AddVideo dispatch={dispatch} editableVideo={editableVideo} ></AddVideo>
-        <VideoList dispatch={dispatch} editVideo={editVideo} videos={videos}></VideoList>
+      <VideoContext.Provider value={videos}>
+        <VideoDispatchContext.Provider value={dispatch}>
+
+          <div className={`App ${mode}`} onClick={() => console.log("app")}>
+            <button className={mode} onClick={() => setMode(mode === 'lightMode' ? 'darkMode' : 'lightMode')}>Mode</button>
+            <AddVideo editableVideo={editableVideo} ></AddVideo>
+            <VideoList editVideo={editVideo} ></VideoList>
 
 
-      </div>
+          </div>
+        </VideoDispatchContext.Provider>
+      </VideoContext.Provider>
     </ThemeContext.Provider>
   );
 }

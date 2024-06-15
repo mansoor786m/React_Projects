@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Video from './Video'
 import PlayButton from './PlayButton'
+import VideoContext from './context/videoContext'
 
-export default function VideoList({ videos, dispatch, editVideo }) {
+export default function VideoList({ editVideo }) {
+    const videos = useContext(VideoContext)
     return (
         <>
             {videos.map((video) => (
@@ -14,9 +16,8 @@ export default function VideoList({ videos, dispatch, editVideo }) {
                     channel={video.channel}
                     verified={video.verified}
                     id={video.id}
-
                     editVideo={editVideo}
-                    dispatch={dispatch}
+
                 >
                     <PlayButton
                         onPlay={() => { console.log('playing..', video.title) }}

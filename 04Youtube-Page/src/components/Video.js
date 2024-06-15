@@ -1,9 +1,11 @@
 import { useContext } from 'react';
 import './Video.css';
 import ThemeContext from './context/ThemeContext';
+import VideoDispatchContext from './context/VideoDispatchContext';
 
-function Video({ title, channel = "Coder Dost", views, time, verified, id, children, dispatch, editVideo, }) {
+function Video({ title, channel = "Coder Dost", views, time, verified, id, children, editVideo, }) {
   const themeContext = useContext(ThemeContext)
+  const dispatch = useContext(VideoDispatchContext);
 
   return (
     <>
