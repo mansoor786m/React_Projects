@@ -1,11 +1,15 @@
+import { useContext } from 'react';
 import './Video.css';
+import ThemeContext from './context/ThemeContext';
 
 function Video({ title, channel = "Coder Dost", views, time, verified, id, children, dispatch, editVideo, }) {
+  const themeContext = useContext(ThemeContext)
+
   return (
     <>
       <div className='container'>
-        <button className='close' onClick={() => { dispatch({ type: 'DELETE', payload: id }) }}>X</button>
-        <button className='edit' onClick={() => { editVideo(id) }}>--</button>
+        <button className={`close ${themeContext} `} onClick={() => { dispatch({ type: 'DELETE', payload: id }) }}>X</button>
+        <button className={`edit ${themeContext} `} onClick={() => { editVideo(id) }}>--</button>
         <div className="pic">
           <img src={`https://picsum.photos/id/${id}/160/90`} alt="Katherine Johnson" />
         </div>
@@ -15,7 +19,7 @@ function Video({ title, channel = "Coder Dost", views, time, verified, id, child
           {views} views <span>.</span> {time}
         </div>
         <div>{children}</div>
-      </div>
+      </div >
     </>
   );
 }
