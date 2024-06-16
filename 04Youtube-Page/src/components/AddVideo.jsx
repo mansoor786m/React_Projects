@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './AddVideo.css'
 import ThemeContext from './context/ThemeContext';
-import VideoDispatchContext from './context/VideoDispatchContext';
+import useVideoDispatch from './hooks/videoDispatch';
 
 const initialState = {
     time: '1 month ago',
@@ -14,7 +14,7 @@ const initialState = {
 export default function AddVideo({ editableVideo }) {
 
     const [video, setVideo] = useState(initialState);
-    const dispatch = useContext(VideoDispatchContext);
+    const dispatch = useVideoDispatch()
 
 
     function handleSubmit(e) {
