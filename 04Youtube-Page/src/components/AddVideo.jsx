@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './AddVideo.css'
-import ThemeContext from './context/ThemeContext';
-import useVideoDispatch from './hooks/videoDispatch';
+import ThemeContext from '../context/ThemeContext';
+import useVideoDispatch from '../hooks/videoDispatch';
+
 
 const initialState = {
     time: '1 month ago',

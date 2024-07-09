@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import './PlayButton.css';
 import { useContext } from 'react';
-import ThemeContext from './context/ThemeContext';
+import ThemeContext from '../context/ThemeContext';
 
 function PlayButton({ children, onPlay, onPause }) {
     const [playing, setPlaying] = useState(false);
