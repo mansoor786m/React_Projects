@@ -62,7 +62,7 @@ function App() {
             <Counter></Counter>
             <button className={mode} onClick={() => setMode(mode === 'lightMode' ? 'darkMode' : 'lightMode')}>Mode</button>
             <AddVideo editableVideo={editableVideo} ></AddVideo>
-            <VideoList className={App} editVideo={editVideo} ></VideoList>
+            <VideoList className={mode} editVideo={editVideo} ></VideoList>
 
 
           </div>
