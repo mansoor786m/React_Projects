@@ -5,7 +5,12 @@ import { TodoProvider } from './contexts'
 import { TodoForm, TodoItem } from './components'
 
 function App() {
-  const [todos, setTodos] = useState(0)
+  const [todos, setTodos] = useState({
+    id: 1,
+    todo: "todo msg",
+    completed: false
+
+  })
 
   const addTodo = (todo) => {
     setTodos((prev) => [{ id: Date.now(), ...todo }, ...todos])
@@ -47,14 +52,14 @@ function App() {
           </div>
           <div className="flex flex-wrap gap-y-3">
             {/*Loop and Add TodoItem here */}
-            {todos.map((todo) => (
+            {/* {todos.map((todo) => (
               <div
                 className='w-full'
                 key={todo.id}>
                 <TodoItem todo={todo} />
 
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
       </div>
